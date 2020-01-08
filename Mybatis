@@ -1,6 +1,7 @@
 【1】Mybatis是这样防止sql注入的：
 Mybatis中使用#可以防止SQL注入，$并不能防止SQL注入；
-Mybatis实现SQL注入的原理是调用了jdbc中的PreparedStatement来进行预处理，然后通过set的方式对占位符进行设置，而$则是通过Statement直接进行查询，当有参数时直接拼接进行查询：
+Mybatis实现SQL注入的原理是调用了jdbc中的PreparedStatement来进行预处理，然后通过set的方式对占位符进行设置，而$则是通过Statement直接进行查询，
+当有参数时直接拼接进行查询：
 ${} : select * from user where id = '' or 1=1;
 #{} : select * from user where id =?;  -> select * from user where id = ' '' or 1=1 '; 会在我们的参数外再加一层引号 ;
 -----------------------------------------------------------------------------------------------------------------------------
